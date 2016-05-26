@@ -42,6 +42,11 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method loads and displays the articles by category. It is used as a callback
+  // in a route.
+  // it creates a private helper function (categoryData) which is then passed in as an
+  // argument to Article.findWhere which gets information from the database and puts it
+  // in the ctx object for use by other callbacks in the route by calling next().
   articlesController.loadByCategory = function(ctx, next) {
     var categoryData = function(articlesInCategory) {
       ctx.articles = articlesInCategory;
