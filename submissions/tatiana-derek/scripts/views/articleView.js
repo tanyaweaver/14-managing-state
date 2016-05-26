@@ -46,7 +46,7 @@
   };
 
   // COMMENT-DONE: What does this method do?  What is it's execution path?
-  //This method is called when the author or category filter (element 'select' in the DOM)
+  //This method is executed when the author or category filter (element 'select' in the DOM)
   //is changed (event 'change').
   //Variable 'resource' is set to "author" or 'category', based on the user choice (by .replace method)
   //then 'resource' is used to load a new route with 'resources' as the root and the 'option' value from the filter
@@ -147,7 +147,10 @@
     });
 
     articleView.populateFilters();
-    // COMMENT: What does this method do?  What is it's execution path?
+    // COMMENT-DONE: What does this method do?  What is it's execution path?
+    // this method installs an event listener for the filters. When the
+    // filter is changed, then a new route is loaded based upon the
+    // filter selection.
     articleView.handleFilters();
 
     // DONE: Replace setTeasers with just the truncation logic, if needed:
