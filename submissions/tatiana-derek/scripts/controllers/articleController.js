@@ -41,7 +41,7 @@
     Article.findWhere('author', ctx.params.authorName.replace('+', ' '), authorData);
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT-DONE: What does this method do?  What is it's execution path?
   // This method loads and displays the articles by category. It is used as a callback
   // in a route.
   // it creates a private helper function (categoryData) which is then passed in as an
@@ -56,7 +56,14 @@
     Article.findWhere('category', ctx.params.categoryName, categoryData);
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT-DONE: What does this method do?  What is it's execution path?
+  // This method is called in the route for the home page.
+  // It creates a private helper function that is used as a callback to
+  // Article.fetchAll.
+  // If the articles have been loaded then we just attach the array to the context
+  // for use by other callbacks in the current route.
+  // If the articles haven't been loaded, we call fetchAll with our private helper
+  // to retrieve them and put them in the pages ctx variable and call the next callback in the route
   articlesController.loadAll = function(ctx, next) {
     var articleData = function(allArticles) {
       ctx.articles = Article.all;
