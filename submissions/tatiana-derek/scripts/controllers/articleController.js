@@ -8,6 +8,12 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //1. Creates a private helper function articleData;
+  //2. which is then passed as an argument into the Article.findWhere method ;
+  //3. Article.findWhere accesses information based on the author id from the database and
+  //makes it available for the current route. 
+  //4. articleData function sets the 'articles' property on the ctx object;
+  // and passes control to the next callback in the route (next())
   articlesController.loadById = function(ctx, next) {
     var articleData = function(article) {
       ctx.articles = article;
