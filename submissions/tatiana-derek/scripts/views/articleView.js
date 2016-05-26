@@ -12,14 +12,15 @@
     return template(article);
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT-DONE: What does this method do?  What is it's execution path?
+  //The method is called by articleView.index (inside of articlesController.index, which is a callback of one of the routes)
   //Filters are populated by 2 different methods:
   //1. Article.allAuthors() returns an array of unique authors and
   //then .map appends options of the filter to the DOM by calling Handlebars template with each author,
   // but only if the option is not there yet.
   //2. Articles.allCathegories uses an anonymous function to append 'category'-options to the filter once it has the requested rows
   // with unique categories from the database; checks whether the option is already appended
-  
+
   articleView.populateFilters = function() {
     var options,
       template = Handlebars.compile($('#option-template').text());
@@ -44,11 +45,17 @@
     });
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT-DONE: What does this method do?  What is it's execution path?
+  //This method is called when the author or category filter (element 'select' in the DOM)
+  //is changed (event 'change').
+  //Variable 'resource' is set to "author" or 'category', based on the user choice (by .replace method)
+  //then 'resource' is used to load a new route with 'resources' as the root and the 'option' value from the filter
+  //is the second part of it: e.g., /author/Brian+Nations
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       resource = this.id.replace('-filter', '');
-      page('/' + resource + '/' + $(this).val().replace(/\W+/g, '+')); // Replace any/all whitespace with a +
+      page('/' + resource + '/' + $(this).val().replace(/\W+/g, '+'));
+      // Replace any/all whitespace with a +
     });
   };
   // articleView.handleAuthorFilter = function() {
