@@ -131,7 +131,13 @@
     $('#article-json').val(JSON.stringify(article) + ',');
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT-DONE: What does this method do?  What is it's execution path?
+  // This method displays the main article page.
+  // first it shows the articles section and hides the others.
+  // then we remove any existing article content before appending
+  // the current set of articles.
+  // After the article content has been appended, we can populate the filters
+  // and set up the handlers.
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
