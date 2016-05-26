@@ -13,6 +13,13 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //Filters are populated by 2 different methods:
+  //1. Article.allAuthors() returns an array of unique authors and
+  //then .map appends options of the filter to the DOM by calling Handlebars template with each author,
+  // but only if the option is not there yet.
+  //2. Articles.allCathegories uses an anonymous function to append 'category'-options to the filter once it has the requested rows
+  // with unique categories from the database; checks whether the option is already appended
+  
   articleView.populateFilters = function() {
     var options,
       template = Handlebars.compile($('#option-template').text());

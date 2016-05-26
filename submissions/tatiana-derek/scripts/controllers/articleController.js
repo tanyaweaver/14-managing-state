@@ -24,7 +24,7 @@
     Article.findWhere('id', ctx.params.id, articleData);
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT-DONE: What does this method do?  What is it's execution path?
   //The method is a callback in a route to load and display all articles written by specific author
   //1. Creates a private helper function authorData;
   //2. which is then passed as an argument into the Article.findWhere method;
