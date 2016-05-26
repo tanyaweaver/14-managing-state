@@ -7,13 +7,14 @@
     articleView.index(ctx.articles);
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT-DONE: What does this method do?  What is it's execution path?
+  //The method is a callback in a route to load and display a single article based on its id in the database
   //1. Creates a private helper function articleData;
   //2. which is then passed as an argument into the Article.findWhere method ;
-  //3. Article.findWhere accesses information based on the author id from the database and
-  //makes it available for the current route. 
+  //3. Article.findWhere accesses information based on the primary key id from the database and
+  //makes it available for the current route.
   //4. articleData function sets the 'articles' property on the ctx object;
-  // and passes control to the next callback in the route (next())
+  // and passes control to the next callback in the route (which is articleController.index)
   articlesController.loadById = function(ctx, next) {
     var articleData = function(article) {
       ctx.articles = article;
@@ -24,6 +25,13 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //The method is a callback in a route to load and display all articles written by specific author
+  //1. Creates a private helper function authorData;
+  //2. which is then passed as an argument into the Article.findWhere method;
+  //3. Article.findWhere accesses information based on the author from the database and
+  //makes it available for the current route.
+  //4. authorData function sets the 'articles' property on the ctx object;
+  // and passes control to the next callback in the route (which is articleController.index)
   articlesController.loadByAuthor = function(ctx, next) {
     var authorData = function(articlesByAuthor) {
       ctx.articles = articlesByAuthor;
